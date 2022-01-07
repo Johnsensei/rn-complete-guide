@@ -27,6 +27,7 @@ export default function App() {
           <GoalItem
             key={itemData.key}
             title={itemData.item.value}
+            onDelete={() => {}}
           />
         }
       />
