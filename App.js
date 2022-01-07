@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
+import GoalItem from './components/GoalItem';
 
 export default function App() {
 
@@ -31,13 +32,13 @@ export default function App() {
         />
       </View>
       <FlatList
+      // keyExtractor={(item, index) => item.id}
         data={goalList}
         renderItem={itemData => 
-          <View key={itemData.key} style={styles.goalItem}>
-            <Text >
-              {itemData.item.value}
-            </Text>
-          </View>
+          <GoalItem
+            key={itemData.key}
+            title={itemData.item.value}
+          />
         }
       />
     </View>
