@@ -10,7 +10,14 @@ export default function App() {
   const addGoalHandler = goalTitle => {
     // console.log(enteredGoal);
     setGoalList(currentGoals => [...currentGoals,
-      {key: Math.random().toString(), value: goalTitle}]);
+      {id: Math.random().toString(), value: goalTitle}]);
+  }
+
+  const removeGoalHandler = goalId => {
+    // console.log("Goal ID: " + goalId);
+    setGoalList(currentGoals => {
+      return currentGoals.filter(goal => goal.id !== goalId);
+    });
   }
 
   return (
@@ -25,9 +32,9 @@ export default function App() {
         data={goalList}
         renderItem={itemData => 
           <GoalItem
-            key={itemData.key}
+            id={itemData.item.id}
             title={itemData.item.value}
-            onDelete={() => {}}
+            onDelete={removeGoalHandler}
           />
         }
       />
