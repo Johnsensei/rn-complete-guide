@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
 
 const GoalInput = props => {
 
@@ -10,6 +10,7 @@ const GoalInput = props => {
       }
 
     return(
+      <Modal visible={props.visible} animationType="slide">
         <View style={styles.goalInputContainer}>
             <TextInput
             placeholder='Input goal.'
@@ -22,6 +23,7 @@ const GoalInput = props => {
             onPress={props.onAddGoal.bind(this, enteredGoal)}
             />
         </View>
+      </Modal>
     );    
 }
 
