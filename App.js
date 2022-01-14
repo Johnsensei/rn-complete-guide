@@ -12,6 +12,7 @@ export default function App() {
     // console.log(enteredGoal);
     setGoalList(currentGoals => [...currentGoals,
       {id: Math.random().toString(), value: goalTitle}]);
+      setShowModal(false);
   }
 
   const removeGoalHandler = goalId => {
@@ -19,6 +20,10 @@ export default function App() {
     setGoalList(currentGoals => {
       return currentGoals.filter(goal => goal.id !== goalId);
     });
+  }
+
+  const cancelHandler = () => {
+    setShowModal(false);
   }
 
   return (
@@ -31,6 +36,7 @@ export default function App() {
 
       <GoalInput
         onAddGoal={addGoalHandler}
+        cancelHandler={cancelHandler}
         visible={showModal}
       />
 
